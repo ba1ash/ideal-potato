@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./x1c4_hw.nix
     ];
 
@@ -14,10 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "x1c4";
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Set your time zone.
   time.timeZone = "Europe/Minsk";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -28,9 +27,44 @@
   networking.interfaces.wlp4s0.useDHCP = true;
   networking.interfaces.wwp0s20f0u2i12.useDHCP = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  services.xserver = {
+    enable = true;
+    autorun = true;
+    layout = "us,ru";
+    xkbOptions = "caps:escape,ctrl:swap_lalt_lctl,altwin:swap_lalt_lwin,grp:rctrl_toggle";
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    displayManager = {
+      defaultSession = "xfce+i3";
+      lightdm.greeters.mini ={
+        enable = true;
+        user = "ba1ash";
+        extraConfig = ''
+          [grreeter]
+          show-password-label = false
+          [greeter-theme]
+          background-image = ""
+        '';
+      };
+    };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu
+        i3status
+        i3lock
+        i3blocks
+      ];
+    };
+  };
+
+  console.useXkbConfig = true;
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -39,15 +73,6 @@
   #   keyMap = "us";
   # };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -68,9 +93,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-	vim
-   ];
+  environment.systemPackages = with pkgs; [
+    vim
+    alacritty
+    firefox
+  ];
+	environment.variables.EDITOR = "vim";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
