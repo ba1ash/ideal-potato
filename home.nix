@@ -8,7 +8,7 @@
 			fonts = { 
 				names = ["DejaVu Sans Mono, FontAwesomeSFree"];
 				style = "Bold Semi-Condensed";
-				size = 11.0;
+				size = 15.0;
 			};
 			keybindings = pkgs.lib.mkOptionDefault {
 				"${modifier}+h" = "focus left";
@@ -21,6 +21,16 @@
 				"${modifier}+Shift+k" = "move up";
 				"${modifier}+Shift+l" = "move left";
 			};
+			bars = [
+				{
+					fonts = {
+						 names = ["DejaVu Sans Mono, FontAwesomeSFree"];
+						 style = "Bold Semi-Condensed";
+						 size = 15.0;
+					};
+				}
+			];
+
 		};
 	};
 	home.packages = [
@@ -37,6 +47,9 @@
 		bash = {
 			enable = true;
 		};
+#		i3status-rust = {
+#			enable = true;
+#		};
 	};
 	home.username = "ba1ash";
 	home.homeDirectory = "/home/ba1ash";
