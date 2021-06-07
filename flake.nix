@@ -2,9 +2,8 @@
 	description = "A very basic flake";
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixos-hardaware.url = "github:NixOs/nixos-hardware/master";
 		home-manager.url = "github:nix-community/home-manager";
-		emacs-overlay.url = "github:nix-community/emacs-overlay"; 
+		nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
 	};
 
 

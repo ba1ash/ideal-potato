@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+	imports = [ inputs.nix-doom-emacs.hmModule ];
 	xsession.windowManager.i3 = {
 		enable = true;
 		config = rec {
@@ -40,6 +41,10 @@
 	];
 	programs.home-manager.enable = true;
 	programs = {
+		doom-emacs = {
+			enable = true;
+			doomPrivateDir = ./doom.d;
+		};
 		git = {
 			enable = true;
 			userName = "Pavel Balashov";
