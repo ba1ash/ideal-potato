@@ -81,6 +81,11 @@
 		qutebrowser
 		zeal
 	];
+
+  environment.interactiveShellInit = "
+    set -o vi
+  ";
+
 	environment.variables.EDITOR = "vim";
 	fonts.fonts = with pkgs; [
 		dejavu_fonts
