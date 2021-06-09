@@ -7,12 +7,12 @@
 {
 	imports = [ ./x1c4_hw.nix ];
 
-# Use the systemd-boot EFI boot loader.
+	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	networking.hostName = "x1c4";
-	networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+	networking.wireless.enable = true;
 	networking.wireless.networks = {
 		"HUAWEI-TKua" = {
 			pskRaw = "57f19f1f2e3d239651980af6009340d07e8387e31505147f022b6d8ffbbcb0ab";	
@@ -21,9 +21,6 @@
 
 	time.timeZone = "Europe/Minsk";
 
-# The global useDHCP flag is deprecated, therefore explicitly set to false here.
-# Per-interface useDHCP will be mandatory in the future, so this generated config
-# replicates the default behaviour.
 	networking.useDHCP = false;
 	networking.interfaces.enp0s31f6.useDHCP = true;
 	networking.interfaces.wlp4s0.useDHCP = true;
@@ -48,7 +45,7 @@
 				enable = true;
 				user = "ba1ash";
 				extraConfig = ''
-					[grreeter]
+					[greeter]
 					show-password-label = false
 						[greeter-theme]
 						background-image = ""
@@ -59,42 +56,24 @@
 			enable = true;
 			extraPackages = with pkgs; [
 				dmenu
-					i3status
-					i3lock
-					i3blocks
+				i3status
+				i3lock
+				i3blocks
 			];
 		};
 	};
 
 	console.useXkbConfig = true;
 
-# Select internationalisation properties.
-# i18n.defaultLocale = "en_US.UTF-8";
-# console = {
-#   font = "Lat2-Terminus16";
-#   keyMap = "us";
-# };
-
-
-# Enable CUPS to print documents.
-# services.printing.enable = true;
-
-# Enable sound.
 	sound.enable = true;
 	hardware.pulseaudio.enable = true;
 
-# Enable touchpad support (enabled default in most desktopManager).
-# services.xserver.libinput.enable = true;
-
-# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.ba1ash = {
 		isNormalUser = true;
 		home = "/home/ba1ash";
-		extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+		extraGroups = [ "wheel" ];
 	};
 
-# List packages installed in system profile. To search, run:
-# $ nix search wget
 	environment.systemPackages = with pkgs; [
 		vim
 		alacritty
@@ -105,17 +84,10 @@
 	environment.variables.EDITOR = "vim";
 	fonts.fonts = with pkgs; [
 		dejavu_fonts
-			font-awesome_5
-			powerline-fonts
+		font-awesome_5
+		powerline-fonts
 	];
 
-# Some programs need SUID wrappers, can be configured further or are
-# started in user sessions.
-# programs.mtr.enable = true;
-# programs.gnupg.agent = {
-#   enable = true;
-#   enableSSHSupport = true;
-# };
 	nix = {
 		package = pkgs.nixUnstable;
 		extraOptions = ''
@@ -123,23 +95,13 @@
 			'';
 	};
 
-# List services that you want to enable:
-
-# Enable the OpenSSH daemon.
 	services.openssh.enable = true;
 
-# Open ports in the firewall.
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
-# Or disable the firewall altogether.
-# networking.firewall.enable = false;
-
-# This value determines the NixOS release from which the default
-# settings for stateful data, like file locations and database versions
-# on your system were taken. It‘s perfectly fine and recommended to leave
-# this value at the release version of the first install of this system.
-# Before changing this value read the documentation for this option
-# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+	# This value determines the NixOS release from which the default
+	# settings for stateful data, like file locations and database versions
+	# on your system were taken. It‘s perfectly fine and recommended to leave
+	# this value at the release version of the first install of this system.
+	# Before changing this value read the documentation for this option
+	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	system.stateVersion = "20.09"; # Did you read the comment?
-
 }

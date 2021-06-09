@@ -10,13 +10,13 @@
 	outputs = inputs@{ self, home-manager, nixpkgs, ...}:
 		let	
 			system = "x86_64-linux";
-			mkBaseSystem = nixConfig: extraModules: nixpkgs.lib.nixosSystem
+			mkBaseSystem = host: extraModules: nixpkgs.lib.nixosSystem
 			{
 				inherit system;
 				specialArgs = { inherit system inputs; };
 				modules = ([
 					#System configuration
-					nixConfig
+					(./. + (builtins.toPath "/hosts/${host}.nix"))
 
 					#General modules
 					# ./modules/general1.nix		
@@ -27,7 +27,7 @@
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.ba1ash = import ./home.nix {
-							inherit inputs system;
+							inherit inputs system host;
 							pkgs = import nixpkgs { inherit system; };	
 						};
 					}
@@ -38,15 +38,15 @@
 		in
 		{
 			nixosConfigurations.x1c4 = mkBaseSystem
-				./hosts/x1c4.nix
+				"x1c4"
 				[
 					# ./modules/general1.nix			
 					# ./modules/general2.nix			
 				];
-#			nixosConfigurations.homeborn = mkBaseSystem
-#				.hosts/homeborn.nix
-#				[
-#					
-#				];
+			nixosConfigurations.homews = mkBaseSystem
+				"homews"
+				[
+
+				];
 		};
 }
