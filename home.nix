@@ -47,6 +47,12 @@
 				fonts.default_size = "20pt";
 				qt.highdpi = true;
 			};
+			keyBindings = {
+				command = {
+					"<Ctrl-j>" = "completion-item-focus next";
+					"<Ctrl-k>" = "completion-item-focus --history prev";
+				};
+			};
 		};
 		doom-emacs = {
 			enable = true;
