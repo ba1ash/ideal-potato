@@ -41,6 +41,20 @@
 	];
 	programs.home-manager.enable = true;
 	programs = {
+		alacritty = {
+			enable = true;
+			# https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+			settings = {
+				key_bindings = [
+					{
+						key =  "Return";
+						mods = "Control|Shift";
+						action = "SpawnNewInstance";
+					}
+				];
+			};
+		};
+		fzf.enable = true;
 		qutebrowser = {
 			enable = true;
 			settings = {
