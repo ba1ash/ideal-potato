@@ -79,6 +79,8 @@
     discord
     docker-compose
     element-desktop
+    zeal
+    firefox
   ];
   environment.interactiveShellInit = "
     set -o vi
