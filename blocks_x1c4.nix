@@ -16,12 +16,6 @@
     interval = 5;
   }
   {
-    block = "net";
-    device = "enp6s0";
-    format = "{ip} {speed_up;K*b} {speed_down;K*b}";
-    interval = 5;
-  }
-  {
     block = "memory";
     display_type = "memory";
     format_mem = "{mem_used_percents}";
