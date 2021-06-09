@@ -41,6 +41,13 @@
 	];
 	programs.home-manager.enable = true;
 	programs = {
+		qutebrowser = {
+			enable = true;
+			settings = {
+				fonts.default_size = "20pt";
+				qt.highdpi = true;
+			};
+		};
 		doom-emacs = {
 			enable = true;
 			doomPrivateDir = ./doom.d;
