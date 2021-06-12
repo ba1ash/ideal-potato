@@ -22,8 +22,6 @@
 		};
 	};
 
-	time.timeZone = "Europe/Minsk";
-
 	networking.useDHCP = false;
 	networking.interfaces.enp0s31f6.useDHCP = true;
 	networking.interfaces.wlp4s0.useDHCP = true;
@@ -78,11 +76,6 @@
 	};
 
 	environment.variables.EDITOR = "vim";
-	fonts.fonts = with pkgs; [
-		dejavu_fonts
-		font-awesome_5
-		powerline-fonts
-	];
 
 	nix = {
 		package = pkgs.nixUnstable;

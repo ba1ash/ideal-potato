@@ -33,4 +33,11 @@
   environment.interactiveShellInit = "
     set -o vi
   ";
+  nixpkgs.config.allowUnfree = true;
+  fonts.fonts = with pkgs; [
+    dejavu_fonts
+    font-awesome_5
+    powerline-fonts
+  ];
+  time.timeZone = "Europe/Minsk";
 }

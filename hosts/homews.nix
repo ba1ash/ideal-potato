@@ -24,11 +24,6 @@
   hardware.bluetooth.enable = true;
 
 
-  fonts.fonts = with pkgs; [
-    dejavu_fonts
-    font-awesome_5
-    powerline-fonts
-  ];
   networking.hostName = "homews";
   networking.useDHCP = false;
   networking.interfaces.enp6s0.useDHCP = true;
@@ -39,8 +34,6 @@
   #    127.0.0.1 youtube.com
   #    127.0.0.1 www.youtube.com
   #  '';
-
-  time.timeZone = "Europe/Minsk";
 
   environment.systemPackages = with pkgs; [
     wine
@@ -113,8 +106,6 @@
     extraGroups = [ "wheel" "adbusers" "docker" ];
   };
 
-
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (self: super : {
       neovim = super.neovim.override {
