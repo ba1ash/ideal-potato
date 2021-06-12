@@ -5,7 +5,10 @@
 { config, pkgs, ... }:
 
 {
-	imports = [ ./x1c4_hw.nix ];
+	imports = [
+		./x1c4_hw.nix
+		./common.nix
+	];
 
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
@@ -73,18 +76,6 @@
 		home = "/home/ba1ash";
 		extraGroups = [ "wheel" ];
 	};
-
-	environment.systemPackages = with pkgs; [
-		vim
-		alacritty
-		firefox
-		qutebrowser
-		zeal
-	];
-
-  environment.interactiveShellInit = "
-    set -o vi
-  ";
 
 	environment.variables.EDITOR = "vim";
 	fonts.fonts = with pkgs; [

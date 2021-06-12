@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./homews_hw.nix
+      ./common.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -42,55 +43,20 @@
   time.timeZone = "Europe/Minsk";
 
   environment.systemPackages = with pkgs; [
-    niv
-    jmtpfs
-    youtube-dl
-    fzf
-    neovim
-    alacritty
-    pciutils
-    glxinfo
-    chromium
-    qutebrowser
-    tdesktop
-    git
-    tmux
-    spotify
-    spotify-tui
-    spotifyd
     wine
-    bash
-    ripgrep
-    fd
-    emacs
-    coreutils
-    clang
-    iproute
-    vlc
-    direnv
-    libreoffice
     steam
-    anki
-    dropbox
-    pandoc
-    unzip
-    mitscheme
-    gnuplot
-    discord
     docker-compose
     element-desktop
-    zeal
-    firefox
+
+    glxinfo
+    pciutils
   ];
-  environment.interactiveShellInit = "
-    set -o vi
-  ";
 
   programs.ssh.startAgent = true;
   programs.adb.enable = true;
 
   services.openssh.enable = true;
-  services.lorri.enable = true;	
+  services.lorri.enable = true;
   services.flatpak.enable = true;
   services.postgresql = {
     enable = true;

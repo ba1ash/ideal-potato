@@ -35,10 +35,7 @@
 
 		};
 	};
-	home.packages = [
-		pkgs.htop
-		pkgs.fortune
-	];
+	home.packages = [];
 	programs.home-manager.enable = true;
 	programs = {
 		alacritty = {
