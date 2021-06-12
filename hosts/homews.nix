@@ -11,18 +11,8 @@
       ./common.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-  hardware.pulseaudio = {
-    enable = true;
-    support32Bit = true;
-    package = pkgs.pulseaudioFull;
-  };
-  hardware.bluetooth.enable = true;
-
 
   networking.hostName = "homews";
   networking.useDHCP = false;
@@ -45,12 +35,7 @@
     pciutils
   ];
 
-  programs.ssh.startAgent = true;
-  programs.adb.enable = true;
-
-  services.openssh.enable = true;
   services.lorri.enable = true;
-  services.flatpak.enable = true;
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_12;
@@ -63,67 +48,6 @@
       CREATE ROLE ba1ash WITH LOGIN PASSWORD 'ba1ash' CREATEDB;
     '';
   };
-  services.xserver = {
-    enable = true;
-    autorun = true;
-    layout = "us,ru";
-    xkbOptions = "caps:escape,ctrl:swap_lalt_lctl,altwin:swap_lalt_lwin,grp:rctrl_toggle";
-    videoDrivers = ["nvidia"];
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
-    displayManager.defaultSession = "xfce+i3";
-    displayManager.lightdm.greeters.mini = {
-      enable = true;
-      user = "ba1ash";
-      extraConfig = ''
-        [greeter]
-        show-password-label = false
-        [greeter-theme]
-        background-image = ""
-      '';
-      
-    };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        i3blocks
-      ];
-    };
-  };
-
-  users.users.ba1ash = {
-    isNormalUser = true;
-    home = "/home/ba1ash";
-    extraGroups = [ "wheel" "adbusers" "docker" ];
-  };
-
-  nixpkgs.overlays = [
-    (self: super : {
-      neovim = super.neovim.override {
-        viAlias = true;
-        vimAlias = true;
-      }; 
-    })
-  ];
-  console.useXkbConfig = true;
-  nix = {
-    allowedUsers = ["ba1ash"];
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      '';
-  };
-  virtualisation.docker.enable = true;
-  xdg.portal.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
