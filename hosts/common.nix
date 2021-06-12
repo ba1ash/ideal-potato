@@ -1,4 +1,4 @@
-{  pkgs, ... }:
+{ pkgs, ... }:
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -90,13 +90,13 @@
     extraGroups = [ "wheel" "adbusers" "docker" ];
   };
   nix = {
-    allowedUsers = ["ba1ash"];
+    allowedUsers = [ "ba1ash" ];
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
       keep-derivations = true
-      '';
+    '';
   };
   virtualisation.docker.enable = true;
   sound.enable = true;
@@ -108,7 +108,7 @@
   hardware.bluetooth.enable = true;
   environment.variables.EDITOR = "nvim";
   nixpkgs.overlays = [
-    (self: super : {
+    (self: super: {
       neovim = super.neovim.override {
         viAlias = true;
         vimAlias = true;

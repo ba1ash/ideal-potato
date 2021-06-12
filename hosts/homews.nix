@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./homews_hw.nix
       ./common.nix
     ];
@@ -35,7 +36,7 @@
     pciutils
   ];
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   services.lorri.enable = true;
   services.postgresql = {
     enable = true;
