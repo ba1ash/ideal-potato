@@ -54,7 +54,6 @@
     autorun = true;
     layout = "us,ru";
     xkbOptions = "caps:escape,ctrl:swap_lalt_lctl,altwin:swap_lalt_lwin,grp:rctrl_toggle";
-    videoDrivers = ["nvidia"];
     desktopManager = {
       xterm.enable = false;
       xfce = {

@@ -35,6 +35,7 @@
     pciutils
   ];
 
+  services.xserver.videoDrivers = ["nvidia"];
   services.lorri.enable = true;
   services.postgresql = {
     enable = true;
