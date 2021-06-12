@@ -38,6 +38,11 @@
 	home.packages = [];
 	programs.home-manager.enable = true;
 	programs = {
+		direnv = {
+			enable = true;
+			enableBashIntegration = true;
+			enableNixDirenvIntegration = true;
+		};
 		alacritty = {
 			enable = true;
 			# https://github.com/alacritty/alacritty/blob/master/alacritty.yml
