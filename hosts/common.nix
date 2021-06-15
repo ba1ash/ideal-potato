@@ -32,10 +32,11 @@
     chromium
     qutebrowser
   ];
-
-  environment.interactiveShellInit = "
-    set -o vi
-  ";
+  environment = {
+    interactiveShellInit = "
+      set -o vi
+    ";
+  };
   nixpkgs.config.allowUnfree = true;
   fonts.fonts = with pkgs; [
     dejavu_fonts

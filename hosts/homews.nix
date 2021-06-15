@@ -26,9 +26,9 @@
   #    127.0.0.1 www.youtube.com
   #  '';
 
+  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     wine
-    steam
     docker-compose
     element-desktop
 
