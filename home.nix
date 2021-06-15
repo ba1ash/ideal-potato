@@ -50,7 +50,10 @@
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv = {
+        enable = true;
+        enableFlakes = true;
+      };
     };
     alacritty = {
       enable = true;
