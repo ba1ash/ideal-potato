@@ -43,6 +43,12 @@
           # ./modules/general1.nix
           # ./modules/general2.nix
         ];
+      nixosConfigurations.p14s = mkBaseSystem
+        "p14s"
+        [
+          # ./modules/general1.nix
+          # ./modules/general2.nix
+        ];
       nixosConfigurations.homews = mkBaseSystem
         "homews"
         [
