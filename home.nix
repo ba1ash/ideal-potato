@@ -1,6 +1,6 @@
 { pkgs, inputs, host, ... }:
 {
-#  imports = [ inputs.nix-doom-emacs.hmModule ];
+  imports = [ inputs.nix-doom-emacs.hmModule ];
   xsession.windowManager.i3 = {
     enable = true;
     config = rec {
@@ -14,7 +14,7 @@
       keybindings = pkgs.lib.mkOptionDefault {
         "${modifier}+h" = "focus left";
         "${modifier}+j" = "focus down";
-#        "${modifier}+k" = "focus up";
+        "${modifier}+k" = "focus up";
         "${modifier}+l" = "focus left";
 
         "${modifier}+Shift+h" = "move left";
@@ -92,10 +92,10 @@
         };
       };
     };
-  # doom-emacs = {
-  #   enable = true;
-  #   doomPrivateDir = ./doom.d;
-  # };
+   doom-emacs = {
+     enable = true;
+     doomPrivateDir = ./doom.d;
+   };
     git = {
       enable = true;
       userName = "Pavel Balashov";
