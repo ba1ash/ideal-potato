@@ -11,7 +11,7 @@
   }
   {
     block = "net";
-    device = "wlp4s0";
+    device = "wlp0s20f3";
     format = "{ssid} {signal_strength} {ip} {speed_up;K*b} {speed_down;K*b}";
     interval = 5;
   }
