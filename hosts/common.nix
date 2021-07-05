@@ -31,6 +31,7 @@
     firefox
     chromium
     qutebrowser
+    google-chrome
   ];
   environment = {
     interactiveShellInit = "
