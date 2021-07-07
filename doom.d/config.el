@@ -94,3 +94,10 @@
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
+
+(setq auto-mode-alist
+      (append
+       ;; File name (within directory) starts with a dot.
+       '(("\\.haml\\'" . haml-mode)
+         ("\\html\.haml\\'" . haml-mode))
+       auto-mode-alist))
