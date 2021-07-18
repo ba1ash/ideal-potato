@@ -174,16 +174,11 @@
         bottom = {
           blocks = import (./. + (builtins.toPath "/blocks_${host}.nix"));
           settings = {
+            icons = "material";
             theme = {
-              name = "solarized-dark";
-              overrides = {
-                idle_bg = "#123456";
-                idle_fg = "#abcdef";
-              };
+              name = "plain";
             };
           };
-          icons = "awesome5";
-          theme = "gruvbox-dark";
         };
       };
     };
