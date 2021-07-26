@@ -21,6 +21,7 @@
   environment.systemPackages = with pkgs; [
     _1password-gui
     emacs
+    android-studio
   ];
 
   services.postgresql = {
@@ -36,6 +37,10 @@
     '';
   };
   services.redis.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [];
+  };
 
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
