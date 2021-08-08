@@ -15,12 +15,12 @@
         "${modifier}+h" = "focus left";
         "${modifier}+j" = "focus down";
         "${modifier}+k" = "focus up";
-        "${modifier}+l" = "focus left";
+        "${modifier}+l" = "focus right";
 
         "${modifier}+Shift+h" = "move left";
         "${modifier}+Shift+j" = "move down";
         "${modifier}+Shift+k" = "move up";
-        "${modifier}+Shift+l" = "move left";
+        "${modifier}+Shift+l" = "move right";
       };
       bars = [
         {
@@ -92,10 +92,10 @@
         };
       };
     };
-   doom-emacs = {
-     enable = true;
-     doomPrivateDir = ./doom.d;
-   };
+    doom-emacs = {
+      enable = true;
+      doomPrivateDir = ./doom.d;
+    };
     git = {
       enable = true;
       userName = "Pavel Balashov";

@@ -10,6 +10,7 @@
     ./common.nix
   ];
 
+
   networking.hostName = "p14s";
   networking.wireless.enable = true;
  # networking.wireless.networks = {
@@ -18,11 +19,29 @@
  #   };
  # };
   environment.systemPackages = with pkgs; [
-   _1password-gui
-   rbenv
-
+    _1password-gui
+    emacs
+    android-studio
   ];
- 
+
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_12;
+    enableTCPIP = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all ::1/128 trust
+    '';
+    initialScript = pkgs.writeText "backend-initScript" ''
+      CREATE ROLE ba1ash WITH LOGIN PASSWORD 'ba1ash' CREATEDB;
+    '';
+  };
+  services.redis.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [];
+  };
+
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;

@@ -31,6 +31,9 @@
     firefox
     chromium
     qutebrowser
+    google-chrome
+    flameshot
+    feh
   ];
   environment = {
     interactiveShellInit = "
@@ -43,7 +46,7 @@
     font-awesome_5
     powerline-fonts
   ];
-  time.timeZone = "Europe/Minsk";
+  time.timeZone = "Europe/Amsterdam";
 
   programs.ssh.startAgent = true;
   services.openssh.enable = true;
