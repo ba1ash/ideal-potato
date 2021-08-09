@@ -21,7 +21,6 @@
   environment.systemPackages = with pkgs; [
     _1password-gui
     emacs
-    android-studio
   ];
 
   services.postgresql = {
