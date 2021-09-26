@@ -11,12 +11,9 @@
   ];
 
   networking.hostName = "x1c4";
-  networking.wireless.enable = true;
-  networking.wireless.networks = {
-    "HUAWEI-TKua" = {
-      pskRaw = "57f19f1f2e3d239651980af6009340d07e8387e31505147f022b6d8ffbbcb0ab";
-    };
-  };
+  networking.networkmanager.enable = true;
+  users.users.ba1ash.extraGroups = [ "networkmanager" ];
+  programs.nm-applet.enable = true;
 
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
