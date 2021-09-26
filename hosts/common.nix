@@ -4,6 +4,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   environment.systemPackages = with pkgs; [
+    hwinfo
+    lshw
     htop
     fortune
     jmtpfs
@@ -110,6 +112,7 @@
     package = pkgs.pulseaudioFull;
   };
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   environment.variables.EDITOR = "nvim";
   nixpkgs.overlays = [
     (self: super: {
