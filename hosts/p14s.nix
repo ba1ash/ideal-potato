@@ -15,10 +15,6 @@
   networking.networkmanager.enable = true;
   users.users.ba1ash.extraGroups = [ "networkmanager" ];
   programs.nm-applet.enable = true;
-  environment.systemPackages = with pkgs; [
-    _1password-gui
-    emacs
-  ];
 
   services.postgresql = {
     enable = true;

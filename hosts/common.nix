@@ -36,6 +36,8 @@
     google-chrome
     flameshot
     feh
+    _1password
+    jq
   ];
   environment = {
     interactiveShellInit = "
