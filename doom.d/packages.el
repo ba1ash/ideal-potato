@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! haml-mode)
+(package! coffee-mode)
