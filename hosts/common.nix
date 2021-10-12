@@ -38,6 +38,11 @@
     feh
     _1password
     jq
+    usbutils
+    nodejs
+    ngrok
+    aircrack-ng
+    reaverwps-t6x
   ];
   environment = {
     interactiveShellInit = "
