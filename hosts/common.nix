@@ -40,6 +40,7 @@
     jq
     usbutils
     nodejs
+    nodePackages.typescript-language-server
     ngrok
     aircrack-ng
     reaverwps-t6x
