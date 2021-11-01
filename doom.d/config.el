@@ -101,3 +101,7 @@
        '(("\\.haml\\'" . haml-mode)
          ("\\html\.haml\\'" . haml-mode))
        auto-mode-alist))
+
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+(after! smartparens
+  (smartparens-global-mode -1))
