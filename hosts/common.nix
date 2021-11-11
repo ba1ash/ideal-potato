@@ -44,6 +44,8 @@
     ngrok
     aircrack-ng
     reaverwps-t6x
+    zoom-us
+    wine
   ];
   environment = {
     interactiveShellInit = "
