@@ -44,15 +44,14 @@
     z-lua = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
     };
     direnv = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
       nix-direnv = {
         enable = true;
-        enableFlakes = true;
       };
     };
     alacritty = {
@@ -60,7 +59,7 @@
       # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
       settings = {
         shell = {
-          program = "/etc/profiles/per-user/ba1ash/bin/fish";
+          program = "/run/current-system/sw/bin/bash";
           args = [
             "--login"
           ];
@@ -77,7 +76,7 @@
     fzf = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
     };
     qutebrowser = {
       enable = true;
@@ -101,41 +100,41 @@
       userName = "Pavel Balashov";
       userEmail = "ba1ashpash@gmail.com";
     };
-    fish = {
-      enable = true;
-      interactiveShellInit = ''
-        fish_vi_key_bindings
-      '';
-      plugins = [
-        {
-          name = "pure";
-          src = pkgs.fetchFromGitHub {
-            owner = "pure-fish";
-            repo = "pure";
-            rev = "master";
-            sha256 = "1ki7b6b7nrb8fzhcslkvg6a9i5fi2da6bv9fm693yvhfhccf863b";
-          };
-        }
-        {
-          name = "bang-bang";
-          src = pkgs.fetchFromGitHub {
-            owner = "oh-my-fish";
-            repo = "plugin-bang-bang";
-            rev = "master";
-            sha256 = "1r3d4wgdylnc857j08lbdscqbm9lxbm1wqzbkqz1jf8bgq2rvk03";
-          };
-        }
-        {
-          name = "grc";
-          src = pkgs.fetchFromGitHub {
-            owner = "oh-my-fish";
-            repo = "plugin-grc";
-            rev = "master";
-            sha256 = "096135ml46mk86rpv2hcxli6gxbzmwqykvk0qxd7b4b0az4w3ky3";
-          };
-        }
-      ];
-    };
+    # fish = {
+    #   enable = true;
+    #   interactiveShellInit = ''
+    #     fish_vi_key_bindings
+    #   '';
+    #   plugins = [
+    #     {
+    #       name = "pure";
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "pure-fish";
+    #         repo = "pure";
+    #         rev = "master";
+    #         sha256 = "1ki7b6b7nrb8fzhcslkvg6a9i5fi2da6bv9fm693yvhfhccf863b";
+    #       };
+    #     }
+    #     {
+    #       name = "bang-bang";
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "oh-my-fish";
+    #         repo = "plugin-bang-bang";
+    #         rev = "master";
+    #         sha256 = "1r3d4wgdylnc857j08lbdscqbm9lxbm1wqzbkqz1jf8bgq2rvk03";
+    #       };
+    #     }
+    #     {
+    #       name = "grc";
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "oh-my-fish";
+    #         repo = "plugin-grc";
+    #         rev = "master";
+    #         sha256 = "096135ml46mk86rpv2hcxli6gxbzmwqykvk0qxd7b4b0az4w3ky3";
+    #       };
+    #     }
+    #   ];
+    # };
     bash = {
       enable = true;
       bashrcExtra = ''
