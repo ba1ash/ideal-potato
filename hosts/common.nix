@@ -58,8 +58,8 @@
     font-awesome_5
     powerline-fonts
   ];
-  # time.timeZone = "Europe/Amsterdam";
-  time.timeZone = "Europe/Minsk";
+  time.timeZone = "Europe/Amsterdam";
+  # time.timeZone = "Europe/Minsk";
 
   programs.ssh.startAgent = true;
   services.openssh.enable = true;
