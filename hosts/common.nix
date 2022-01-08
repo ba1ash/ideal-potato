@@ -9,7 +9,7 @@
     htop
     fortune
     jmtpfs
-    youtube-dl
+    yt-dlp
     neovim
     fzf
     alacritty
