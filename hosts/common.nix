@@ -46,6 +46,7 @@
     reaverwps-t6x
     zoom-us
     wine
+    zip
   ];
   environment = {
     interactiveShellInit = "
