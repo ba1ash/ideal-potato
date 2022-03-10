@@ -47,6 +47,9 @@
     zoom-us
     wine
     zip
+    _1password-gui
+    gsettings-desktop-schemas
+    thunderbird
   ];
   environment = {
     interactiveShellInit = "
