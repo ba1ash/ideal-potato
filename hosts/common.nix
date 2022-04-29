@@ -27,7 +27,6 @@
     anki
     dropbox
     unzip
-    mitscheme
     pandoc
     zeal
     firefox
@@ -50,6 +49,7 @@
     _1password-gui
     gsettings-desktop-schemas
     thunderbird
+    # emacs
   ];
   environment = {
     interactiveShellInit = "
@@ -111,7 +111,9 @@
     extraGroups = [ "wheel" "adbusers" "docker" ];
   };
   nix = {
-    allowedUsers = [ "ba1ash" ];
+    settings = {
+      allowed-users = [ "ba1ash" ];
+    };
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes

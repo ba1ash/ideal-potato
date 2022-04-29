@@ -3,7 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
 
@@ -28,7 +28,10 @@
               home-manager.useUserPackages = true;
               home-manager.users.ba1ash = import ./home.nix {
                 inherit inputs system host;
-                pkgs = import nixpkgs { inherit system; };
+                pkgs = import nixpkgs {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
               };
             }
 
