@@ -20,12 +20,6 @@
   networking.interfaces.enp6s0.useDHCP = true;
   networking.interfaces.wlp5s0.useDHCP = true;
   networking.iproute2.enable = true;
-  #  networking.extraHosts =
-  #  ''
-  #    127.0.0.1 youtube.com
-  #    127.0.0.1 www.youtube.com
-  #  '';
-
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     wine

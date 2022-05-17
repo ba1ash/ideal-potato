@@ -49,7 +49,8 @@
     _1password-gui
     gsettings-desktop-schemas
     thunderbird
-    # emacs
+    slack
+    postman
   ];
   environment = {
     interactiveShellInit = "

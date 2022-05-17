@@ -19,6 +19,11 @@
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp4s0.useDHCP = true;
   networking.interfaces.wwp0s20f0u2i12.useDHCP = true;
+  networking.extraHosts =
+    ''
+     127.0.0.1 crowdcigar.com
+   '';
+
 
   services.postgresql = {
     enable = true;
