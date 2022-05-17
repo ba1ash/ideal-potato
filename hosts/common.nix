@@ -115,7 +115,7 @@
     settings = {
       allowed-users = [ "ba1ash" ];
     };
-    package = pkgs.nixUnstable;
+    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
