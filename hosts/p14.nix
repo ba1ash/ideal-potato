@@ -6,15 +6,26 @@
 
 {
   imports = [
-    ./p14s_hw.nix
+    ./p14_hw.nix
     ./common.nix
   ];
 
+  boot.initrd.luks.devices = {
+    luksroot = {
+      device = "/dev/disk/by-uuid/bb3932cb-9dac-46c8-ae41-e8cdfec4ced1";
+      preLVM = true;
+    };
+  };
 
-  networking.hostName = "p14s";
-  networking.networkmanager.enable = true;
-  users.users.ba1ash.extraGroups = [ "networkmanager" ];
-  programs.nm-applet.enable = true;
+  networking.hostName = "p14";
+  networking.extraHosts =
+    ''
+     127.0.0.1 crowdcigar.com
+   '';
+
+  networking.useDHCP = false;
+  networking.interfaces.enp0s13f0u2u1.useDHCP = true;
+  services.xserver.videoDrivers = [ "intel" ];
 
   services.postgresql = {
     enable = true;
@@ -25,24 +36,27 @@
       host all all ::1/128 trust
     '';
     initialScript = pkgs.writeText "backend-initScript" ''
-      CREATE ROLE ba1ash WITH LOGIN PASSWORD 'ba1ash' CREATEDB;
+      CREATE ROLE ba1ash WITH LOGIN PASSWORD SUPERUSER 'ba1ash' CREATEDB;
     '';
   };
-  services.redis.enable = true;
-  services.printing = {
-    enable = true;
-    drivers = [];
-  };
 
-  networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  environment.systemPackages = with pkgs; [
+    awscli
+    ssm-session-manager-plugin
+    putty
+    virt-manager
+    slack
+    postman
+  ];
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
+  users.users.ba1ash.extraGroups = [ "libvirtd" ];
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.11"; # Did you read the comment?
 }

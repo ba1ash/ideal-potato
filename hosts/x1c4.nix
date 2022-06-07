@@ -11,19 +11,23 @@
   ];
 
   networking.hostName = "x1c4";
-  networking.networkmanager.enable = true;
-  users.users.ba1ash.extraGroups = [ "networkmanager" ];
-  programs.nm-applet.enable = true;
+
+  nix = {
+    settings = {
+      allowed-users = [ "ba1ash" ];
+    };
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+    '';
+  };
 
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp4s0.useDHCP = true;
   networking.interfaces.wwp0s20f0u2i12.useDHCP = true;
-  networking.extraHosts =
-    ''
-     127.0.0.1 crowdcigar.com
-   '';
-
 
   services.postgresql = {
     enable = true;

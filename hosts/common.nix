@@ -25,14 +25,12 @@
     direnv
     libreoffice
     anki
-    dropbox
     unzip
     pandoc
     zeal
     firefox
     chromium
     qutebrowser
-    google-chrome
     flameshot
     feh
     _1password
@@ -40,17 +38,13 @@
     usbutils
     nodejs
     nodePackages.typescript-language-server
-    ngrok
-    aircrack-ng
-    reaverwps-t6x
     zoom-us
     wine
     zip
     _1password-gui
     gsettings-desktop-schemas
     thunderbird
-    slack
-    postman
+    wget
   ];
   environment = {
     interactiveShellInit = "
@@ -64,7 +58,6 @@
     powerline-fonts
   ];
   time.timeZone = "Europe/Amsterdam";
-  # time.timeZone = "Europe/Minsk";
 
   programs.ssh.startAgent = true;
   services.openssh.enable = true;
@@ -73,7 +66,7 @@
 
   services.xserver = {
     enable = true;
-    autorun = true;
+    autorun = false;
     layout = "us,ru";
     xkbOptions = "caps:escape,ctrl:swap_lalt_lctl,altwin:swap_lalt_lwin,grp:rctrl_toggle";
     desktopManager = {
@@ -109,7 +102,7 @@
   users.users.ba1ash = {
     isNormalUser = true;
     home = "/home/ba1ash";
-    extraGroups = [ "wheel" "adbusers" "docker" ];
+    extraGroups = [ "wheel" "adbusers" "docker" "networkmanager" ];
   };
   nix = {
     settings = {
@@ -118,10 +111,10 @@
     package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
     '';
   };
+  networking.networkmanager.enable = true; 
+  programs.nm-applet.enable = true;
   virtualisation.docker.enable = true;
   sound.enable = true;
   hardware.pulseaudio = {

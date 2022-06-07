@@ -1,7 +1,7 @@
 {
   description = "A very basic flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     home-manager.url = "github:nix-community/home-manager";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
@@ -46,16 +46,13 @@
           # ./modules/general1.nix
           # ./modules/general2.nix
         ];
-      nixosConfigurations.p14s = mkBaseSystem
-        "p14s"
+      nixosConfigurations.p14 = mkBaseSystem
+        "p14"
         [
-          # ./modules/general1.nix
-          # ./modules/general2.nix
         ];
       nixosConfigurations.homews = mkBaseSystem
         "homews"
         [
-
         ];
       devShell.x86_64-linux =
         with nixpkgs.legacyPackages.x86_64-linux;
